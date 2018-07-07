@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+	<!-- 配置注解 -->
+	<context:component-scan base-package="*"></context:component-scan>
+	<!-- 视图解析器 ,通过类读取属性-->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+	<!-- 配置jstl国际化，通过id读取属性 -->
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="abc"></property>
+	</bean>
+	<!-- 通过controller映射可不配置。配置国际化语言映射视图 -->
+	<mvc:view-controller path="/abcd" view-name="a" />
+	<!-- 如果给某一个视图配置映射信息,则控制器的方法映射全部无效,必须配置以下标签使@RequestMapping生效 -->
+	<mvc:annotation-driven></mvc:annotation-driven>
+</beans>
