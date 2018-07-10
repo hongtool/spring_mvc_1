@@ -8,6 +8,7 @@
 </head>
 <body>
 	Result page:
+	get city by request: ${requestScope.city }<br />
 	city: ${sessionScope.city }<br />
 	name: ${sessionScope.name }<br />
 </body>

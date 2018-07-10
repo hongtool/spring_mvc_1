@@ -13,12 +13,17 @@
 		<property name="prefix" value="/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
+	<!-- 配置自定义视图对应的解析器,优先级越高,value值越小 。value的最大值为Integer的最大值-->
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="100"></property>
+	</bean>
 	<!-- 配置jstl国际化，通过id读取属性 -->
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basename" value="abc"></property>
 	</bean>
 	<!-- 通过controller映射可不配置。配置国际化语言映射视图 -->
 	<mvc:view-controller path="/abcd" view-name="a" />
+	<mvc:view-controller path="/myView" view-name="myView" />
 	<!-- 如果给某一个视图配置映射信息,则控制器的方法映射全部无效,必须配置以下标签使@RequestMapping生效 -->
 	<mvc:annotation-driven></mvc:annotation-driven>
 </beans>

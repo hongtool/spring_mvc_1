@@ -80,6 +80,7 @@ public class HelloWorldHandler {
 	}
 	
 	//获取请求报头信息
+	//Accept表示前端可以接收的类型
 	@RequestMapping("/testRequestHeader")
 	public String testRequestHeader(@RequestHeader("Accept") String a, @RequestHeader("User-Agent") String b) {
 		System.out.println(a);
@@ -87,7 +88,7 @@ public class HelloWorldHandler {
 		return "success";
 	}
 	
-	//获取请求报头信息
+	//获取cookie的值
 	@RequestMapping("/testCookieValue")
 	public String testCookieValue(@CookieValue("JSESSIONID") String id) {
 		System.out.println(id);
@@ -116,7 +117,7 @@ public class HelloWorldHandler {
 	}
 	
 	@RequestMapping("/testModel")
-	public String testMap(Model model) {
+	public String testModel(Model model) {
 		model.addAttribute("mail", "xin@qq.com");
 		return "success";
 	}

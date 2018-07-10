@@ -8,5 +8,12 @@
 </head>
 <body>
 	This is a success page!!!<br />
+	<%-- From request Scope name:${requestScope.name } --%>
+	From request Scope name:${requestScope.name }<br />
+	From request Scope age by Map:${requestScope.age }<br />
+	From request Scope mail by Model:${requestScope.mail }<br />
+	From request Scope city by ModelMap:${requestScope.city }<br />
+	From session Scope city by ModelMap:${sessionScope.city }<br />
+	<a href="result">test result</a><br />
 </body>
 </html>
